@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Tablero - Guatemala IPO</title>
+
+    <link
+        rel="stylesheet"
+        href="./css/style.css"
+    >
+
+</head>
+
+
+<body>
+
+    <div class="app">
+
+
+        <!-- CABECERA -->
+
+        <header class="cabecera">
+
+            <div>
+
+                <p class="cabecera__subtitulo">
+                    Interacción Persona Ordenador
+                </p>
+
+                <h1>
+                    Tablero
+                </h1>
+
+            </div>
+
+
+            <button
+                class="boton boton--principal"
+                type="button"
+                data-action="nueva-partida"
+            >
+                Nueva partida
+            </button>
+
+        </header>
+
+
+
+        <!-- CONTENIDO PRINCIPAL -->
+
+        <main class="principal">
+
+
+            <!-- CONFIGURACIÓN -->
+
+            <section
+                class="configuracion"
+                aria-labelledby="titulo-configuracion"
+            >
+
+                <h2
+                    id="titulo-configuracion"
+                    class="configuracion__titulo"
+                >
+                    Configuración
+                </h2>
+
+
+                <div class="controles">
+
+
+                    <!-- DIMENSIÓN -->
+
+                    <label class="control">
+
+                        <span>
+                            Dimensión
+                        </span>
+
+                        <input
+                            type="number"
+                            min="3"
+                            value="3"
+                            data-control="dimension"
+                        >
+
+                    </label>
+
+
+
+                    <!-- TAMAÑO DE FICHAS -->
+
+                    <label class="control">
+
+                        <span>
+                            Tamaño de fichas
+                        </span>
+
+                        <select data-control="tamano">
+
+                            <option value="pequena">
+                                Pequeña
+                            </option>
+
+                            <option
+                                value="mediana"
+                                selected
+                            >
+                                Mediana
+                            </option>
+
+                            <option value="grande">
+                                Grande
+                            </option>
+
+                        </select>
+
+                    </label>
+
+
+
+                    <!-- APARIENCIA -->
+
+                    <label class="control">
+
+                        <span>
+                            Apariencia
+                        </span>
+
+                        <select data-control="apariencia">
+
+                            <option
+                                value="clasico"
+                                selected
+                            >
+                                Clásica
+                            </option>
+
+                            <option value="alternativo">
+                                Alternativa
+                            </option>
+
+                            <option value="minimal">
+                                Minimal
+                            </option>
+
+                        </select>
+
+                    </label>
+
+
+                </div>
+
+            </section>
+
+
+
+            <!-- ZONA DE JUEGO -->
+
+            <section
+                class="juego"
+                aria-labelledby="titulo-juego"
+            >
+
+                <header class="juego__cabecera">
+
+                    <div>
+
+                        <p class="juego__etiqueta">
+                            Partida actual
+                        </p>
+
+                        <h2 id="titulo-juego">
+                            Ordena las filas
+                        </h2>
+
+                    </div>
+
+
+                    <p
+                        class="movimientos"
+                        data-movimientos
+                    >
+                        Movimientos: 0
+                    </p>
+
+                </header>
+
+
+
+                <!-- TABLERO -->
+
+                <div
+                    class="tablero"
+                    data-tablero
+                    aria-label="Tablero de juego"
+                >
+                </div>
+
+
+
+                <!-- ESTADO -->
+
+                <p
+                    class="estado"
+                    data-estado
+                    aria-live="polite"
+                >
+                    Arrastra una ficha sobre otra para intercambiarlas.
+                </p>
+
+            </section>
+
+
+        </main>
+
+
+
+        <!-- FOOTER -->
+
+        <footer class="footer">
+
+            Grupo Guatemala - IPO
+
+        </footer>
+
+
+
+        <!-- BOTÓN DE AYUDA -->
+
+        <button
+            class="boton-ayuda"
+            type="button"
+            data-action="abrir-ayuda"
+            aria-label="Mostrar ayuda"
+            aria-controls="panel-ayuda"
+            aria-expanded="false"
+        >
+            ?
+        </button>
+
+
+
+        <!-- PANEL DE AYUDA -->
+
+        <section
+            class="ayuda"
+            id="panel-ayuda"
+            data-ayuda
+            hidden
+        >
+
+            <div
+                class="ayuda__contenido"
+                role="dialog"
+                aria-modal="true"
+                aria-labelledby="titulo-ayuda"
+            >
+
+                <header class="ayuda__cabecera">
+
+                    <h2 id="titulo-ayuda">
+                        Cómo jugar
+                    </h2>
+
+                    <button
+                        class="ayuda__cerrar"
+                        type="button"
+                        data-action="cerrar-ayuda"
+                        aria-label="Cerrar ayuda"
+                    >
+                        ×
+                    </button>
+
+                </header>
+
+
+                <p>
+                    El objetivo es conseguir que todas las fichas
+                    de cada fila sean del mismo tipo.
+                </p>
+
+                <p>
+                    Arrastra una ficha sobre otra para intercambiar
+                    sus posiciones.
+                </p>
+
+                <p>
+                    Si cambias la dimensión, el tamaño o la apariencia,
+                    se generará automáticamente una nueva partida.
+                </p>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- VENTANA DE VICTORIA -->
+
+        <section
+            class="victoria"
+            data-victoria
+            hidden
+        >
+
+            <div
+                class="victoria__contenido"
+                role="dialog"
+                aria-modal="true"
+                aria-labelledby="titulo-victoria"
+            >
+
+                <p class="victoria__icono">
+                    ✓
+                </p>
+
+
+                <h2 id="titulo-victoria">
+                    ¡Has ganado!
+                </h2>
+
+
+                <p>
+                    Has conseguido ordenar todas las filas del tablero.
+                </p>
+
+
+                <p
+                    class="victoria__movimientos"
+                    data-victoria-movimientos
+                >
+                </p>
+
+
+                <button
+                    class="boton boton--principal"
+                    type="button"
+                    data-action="partida-victoria"
+                >
+                    Nueva partida
+                </button>
+
+            </div>
+
+        </section>
+
+
+    </div>
+
+
+
+    <script
+        type="module"
+        src="./javascript/controller.js"
+    >
+    </script>
+
+
+</body>
+
+</html>

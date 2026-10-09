@@ -1,0 +1,1535 @@
+/* ========================================
+   RESET
+   ======================================== */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+
+html {
+    font-size: 100%;
+}
+
+
+body,
+h1,
+h2,
+p {
+    margin: 0;
+}
+
+
+button,
+input,
+select {
+    font: inherit;
+}
+
+
+
+/* ========================================
+   VARIABLES
+   ======================================== */
+
+:root {
+
+    /* PALETA OSCURA */
+
+    --tono-base: 225;
+
+    --color-fondo:
+        hsl(var(--tono-base), 32%, 10%);
+
+    --color-superficie:
+        hsl(var(--tono-base), 24%, 16%);
+
+    --color-superficie-secundaria:
+        hsl(var(--tono-base), 20%, 20%);
+
+    --color-principal:
+        hsl(212, 75%, 55%);
+
+    --color-principal-hover:
+        hsl(212, 75%, 48%);
+
+    --color-texto:
+        hsl(0, 0%, 94%);
+
+    --color-texto-secundario:
+        hsl(var(--tono-base), 12%, 72%);
+
+    --color-borde:
+        hsl(var(--tono-base), 18%, 30%);
+
+    --color-celda:
+        hsl(var(--tono-base), 18%, 22%);
+
+
+    /* COLORES DE FICHAS */
+
+    --ficha-azul:
+        hsl(210, 72%, 55%);
+
+    --ficha-rosa:
+        hsl(330, 72%, 56%);
+
+    --ficha-verde:
+        hsl(90, 58%, 44%);
+
+
+    /* ESPACIADO */
+
+    --espacio-xs: 0.5rem;
+
+    --espacio-s: 0.8rem;
+
+    --espacio-m: 1.25rem;
+
+    --espacio-l: 2rem;
+
+    --espacio-xl: 3rem;
+
+
+    /* RADIOS */
+
+    --radio-s: 0.5rem;
+
+    --radio-m: 0.9rem;
+
+    --radio-l: 1.3rem;
+
+
+    /* SOMBRAS */
+
+    --sombra-suave:
+        0 0.4rem 1.2rem
+        hsl(0 0% 0% / 0.25);
+
+    --sombra-media:
+        0 1rem 3rem
+        hsl(0 0% 0% / 0.4);
+
+
+    /* TRANSICIÓN */
+
+    --transicion:
+        180ms ease;
+
+}
+
+
+
+/* ========================================
+   GENERAL
+   ======================================== */
+
+body {
+
+    min-height: 100dvh;
+
+    background-color:
+        var(--color-fondo);
+
+    color:
+        var(--color-texto);
+
+    font-family:
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
+    line-height: 1.5;
+
+}
+
+
+
+.app {
+
+    min-height: 100dvh;
+
+    display: grid;
+
+    grid-template-rows:
+        auto
+        1fr
+        auto;
+
+}
+
+
+
+/* ========================================
+   CABECERA
+   ======================================== */
+
+.cabecera {
+
+    display: flex;
+
+    justify-content:
+        space-between;
+
+    align-items:
+        center;
+
+    gap:
+        var(--espacio-m);
+
+    padding:
+        var(--espacio-m)
+        var(--espacio-l);
+
+    background-color:
+        var(--color-superficie);
+
+    border-bottom:
+        0.08rem solid
+        var(--color-borde);
+
+    box-shadow:
+        var(--sombra-suave);
+
+}
+
+
+
+.cabecera h1 {
+
+    font-size:
+        clamp(
+            1.8rem,
+            4vw,
+            2.6rem
+        );
+
+    letter-spacing:
+        -0.04em;
+
+}
+
+
+
+.cabecera__subtitulo {
+
+    margin-bottom:
+        0.15rem;
+
+    color:
+        var(--color-texto-secundario);
+
+    font-size:
+        0.8rem;
+
+    font-weight:
+        600;
+
+    text-transform:
+        uppercase;
+
+    letter-spacing:
+        0.08em;
+
+}
+
+
+
+/* ========================================
+   BOTONES
+   ======================================== */
+
+.boton {
+
+    padding:
+        0.7em
+        1.15em;
+
+    border:
+        0.08rem solid
+        transparent;
+
+    border-radius:
+        var(--radio-m);
+
+    cursor:
+        pointer;
+
+    font-weight:
+        650;
+
+    transition:
+        background-color var(--transicion),
+        transform var(--transicion),
+        box-shadow var(--transicion);
+
+}
+
+
+
+.boton--principal {
+
+    background-color:
+        var(--color-principal);
+
+    color:
+        white;
+
+}
+
+
+
+.boton--principal:hover {
+
+    background-color:
+        var(--color-principal-hover);
+
+    transform:
+        translateY(-0.08rem);
+
+    box-shadow:
+        var(--sombra-suave);
+
+}
+
+
+
+.boton:active {
+
+    transform:
+        translateY(0);
+
+}
+
+
+
+.boton:focus-visible {
+
+    outline:
+        0.18rem solid
+        hsl(212 75% 55% / 0.4);
+
+    outline-offset:
+        0.2rem;
+
+}
+
+
+
+/* ========================================
+   PRINCIPAL
+   ======================================== */
+
+.principal {
+
+    width:
+        min(72rem, 94%);
+
+    margin-inline:
+        auto;
+
+    display:
+        grid;
+
+    grid-template-columns:
+        minmax(14rem, 20rem)
+        minmax(0, 1fr);
+
+    gap:
+        var(--espacio-l);
+
+    align-items:
+        start;
+
+    padding-block:
+        var(--espacio-l);
+
+}
+
+
+
+/* ========================================
+   CONFIGURACIÓN
+   ======================================== */
+
+.configuracion {
+
+    background-color:
+        var(--color-superficie);
+
+    border:
+        0.08rem solid
+        var(--color-borde);
+
+    border-radius:
+        var(--radio-l);
+
+    padding:
+        var(--espacio-m);
+
+    box-shadow:
+        var(--sombra-suave);
+
+}
+
+
+
+.configuracion__titulo {
+
+    margin-bottom:
+        var(--espacio-m);
+
+    font-size:
+        1.15rem;
+
+}
+
+
+
+.controles {
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    gap:
+        var(--espacio-m);
+
+}
+
+
+
+.control {
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    gap:
+        var(--espacio-xs);
+
+    position:
+        relative;
+
+}
+
+
+
+.control span {
+
+    color:
+        var(--color-texto-secundario);
+
+    font-size:
+        0.85rem;
+
+    font-weight:
+        650;
+
+}
+
+
+
+/* ========================================
+   INPUTS Y SELECTS
+   ======================================== */
+
+.control input,
+.control select {
+
+    width:
+        100%;
+
+    padding:
+        0.75em
+        0.9em;
+
+    border:
+        0.08rem solid
+        var(--color-borde);
+
+    border-radius:
+        var(--radio-s);
+
+    background-color:
+        hsl(var(--tono-base), 20%, 14%);
+
+    color:
+        var(--color-texto);
+
+    transition:
+        border-color var(--transicion),
+        background-color var(--transicion),
+        box-shadow var(--transicion);
+
+}
+
+
+
+.control input:hover,
+.control select:hover {
+
+    border-color:
+        var(--color-principal);
+
+}
+
+
+
+.control input:focus,
+.control select:focus {
+
+    outline:
+        none;
+
+    border-color:
+        var(--color-principal);
+
+    box-shadow:
+        0 0 0 0.18rem
+        hsl(212 75% 55% / 0.2);
+
+}
+
+
+
+/* Quitamos el aspecto nativo del select */
+
+.control select {
+
+    appearance:
+        none;
+
+    -webkit-appearance:
+        none;
+
+    -moz-appearance:
+        none;
+
+    padding-right:
+        2.5em;
+
+    cursor:
+        pointer;
+
+}
+
+
+
+/* Flecha personalizada */
+
+.control:has(select)::after {
+
+    content:
+        "⌄";
+
+    position:
+        absolute;
+
+    right:
+        1rem;
+
+    bottom:
+        0.75rem;
+
+    color:
+        var(--color-texto-secundario);
+
+    font-size:
+        1.2rem;
+
+    pointer-events:
+        none;
+
+}
+
+
+
+/* ========================================
+   JUEGO
+   ======================================== */
+
+.juego {
+
+    min-width:
+        0;
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    align-items:
+        center;
+
+    gap:
+        var(--espacio-m);
+
+}
+
+
+
+.juego__cabecera {
+
+    width:
+        min(100%, 42rem);
+
+    display:
+        flex;
+
+    justify-content:
+        space-between;
+
+    align-items:
+        end;
+
+    gap:
+        var(--espacio-m);
+
+}
+
+
+
+.juego__cabecera h2 {
+
+    font-size:
+        clamp(
+            1.4rem,
+            3vw,
+            2rem
+        );
+
+}
+
+
+
+.juego__etiqueta {
+
+    color:
+        var(--color-texto-secundario);
+
+    font-size:
+        0.8rem;
+
+    font-weight:
+        650;
+
+    text-transform:
+        uppercase;
+
+    letter-spacing:
+        0.07em;
+
+}
+
+
+
+.movimientos {
+
+    color:
+        var(--color-texto-secundario);
+
+    font-size:
+        0.9rem;
+
+    white-space:
+        nowrap;
+
+}
+
+
+
+/* ========================================
+   TABLERO
+   ======================================== */
+
+.tablero {
+
+    --dimension:
+        3;
+
+    width:
+        min(76vmin, 38rem);
+
+    aspect-ratio:
+        1;
+
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(
+            var(--dimension),
+            1fr
+        );
+
+    grid-template-rows:
+        repeat(
+            var(--dimension),
+            1fr
+        );
+
+    gap:
+        0.45rem;
+
+    padding:
+        0.65rem;
+
+    background-color:
+        var(--color-superficie);
+
+    border:
+        0.08rem solid
+        var(--color-borde);
+
+    border-radius:
+        var(--radio-l);
+
+    box-shadow:
+        var(--sombra-media);
+
+}
+
+
+
+.celda {
+
+    min-width:
+        0;
+
+    min-height:
+        0;
+
+    display:
+        grid;
+
+    place-items:
+        center;
+
+    background-color:
+        var(--color-celda);
+
+    border:
+        0.05rem solid
+        hsl(var(--tono-base), 15%, 26%);
+
+    border-radius:
+        var(--radio-s);
+
+    transition:
+        background-color var(--transicion),
+        transform var(--transicion),
+        border-color var(--transicion);
+
+}
+
+
+
+.celda.sobre {
+
+    background-color:
+        hsl(212, 45%, 30%);
+
+    border-color:
+        var(--color-principal);
+
+    transform:
+        scale(0.96);
+
+}
+
+
+
+/* ========================================
+   FICHAS
+   ======================================== */
+
+.ficha {
+
+    width:
+        64%;
+
+    aspect-ratio:
+        1;
+
+    cursor:
+        grab;
+
+    transition:
+        transform var(--transicion),
+        opacity var(--transicion),
+        filter var(--transicion);
+
+}
+
+
+
+.ficha:hover {
+
+    transform:
+        scale(1.08);
+
+    filter:
+        brightness(1.12);
+
+}
+
+
+
+.ficha:active {
+
+    cursor:
+        grabbing;
+
+}
+
+
+
+.ficha.arrastrando {
+
+    opacity:
+        0.4;
+
+    transform:
+        scale(0.9);
+
+}
+
+
+
+/* ========================================
+   TAMAÑOS
+   ======================================== */
+
+.tablero[data-tamano="pequena"]
+.ficha {
+
+    width:
+        48%;
+
+}
+
+
+
+.tablero[data-tamano="mediana"]
+.ficha {
+
+    width:
+        64%;
+
+}
+
+
+
+.tablero[data-tamano="grande"]
+.ficha {
+
+    width:
+        80%;
+
+}
+
+
+
+/* ========================================
+   APARIENCIA CLÁSICA
+   ======================================== */
+
+.tablero[data-apariencia="clasico"]
+.ficha[data-tipo="0"] {
+
+    background-color:
+        var(--ficha-azul);
+
+    border-radius:
+        50%;
+
+}
+
+
+
+.tablero[data-apariencia="clasico"]
+.ficha[data-tipo="1"] {
+
+    background-color:
+        var(--ficha-rosa);
+
+    border-radius:
+        0.3rem;
+
+}
+
+
+
+.tablero[data-apariencia="clasico"]
+.ficha[data-tipo="2"] {
+
+    background-color:
+        var(--ficha-verde);
+
+    clip-path:
+        polygon(
+            50% 0%,
+            100% 100%,
+            0% 100%
+        );
+
+}
+
+
+
+/* ========================================
+   APARIENCIA ALTERNATIVA
+   ======================================== */
+
+.tablero[data-apariencia="alternativo"]
+.ficha[data-tipo="0"] {
+
+    background-color:
+        hsl(30, 78%, 55%);
+
+    clip-path:
+        polygon(
+            50% 0%,
+            100% 50%,
+            50% 100%,
+            0% 50%
+        );
+
+}
+
+
+
+.tablero[data-apariencia="alternativo"]
+.ficha[data-tipo="1"] {
+
+    background-color:
+        hsl(150, 55%, 44%);
+
+    border-radius:
+        50%;
+
+}
+
+
+
+.tablero[data-apariencia="alternativo"]
+.ficha[data-tipo="2"] {
+
+    background-color:
+        hsl(270, 62%, 57%);
+
+    border-radius:
+        0.3rem;
+
+}
+
+
+
+/* ========================================
+   APARIENCIA MINIMAL
+   ======================================== */
+
+.tablero[data-apariencia="minimal"]
+.ficha[data-tipo="0"] {
+
+    background-color:
+        hsl(195, 65%, 48%);
+
+    border-radius:
+        0.2rem;
+
+}
+
+
+
+.tablero[data-apariencia="minimal"]
+.ficha[data-tipo="1"] {
+
+    background-color:
+        hsl(315, 58%, 55%);
+
+    clip-path:
+        polygon(
+            50% 0%,
+            100% 50%,
+            50% 100%,
+            0% 50%
+        );
+
+}
+
+
+
+.tablero[data-apariencia="minimal"]
+.ficha[data-tipo="2"] {
+
+    background-color:
+        hsl(75, 55%, 45%);
+
+    border-radius:
+        50%;
+
+}
+
+
+
+/* ========================================
+   ESTADO
+   ======================================== */
+
+.estado {
+
+    color:
+        var(--color-texto-secundario);
+
+    text-align:
+        center;
+
+    font-size:
+        0.9rem;
+
+}
+
+
+
+.estado--ganado {
+
+    color:
+        hsl(135, 65%, 58%);
+
+    font-weight:
+        700;
+
+}
+
+
+
+/* ========================================
+   FOOTER
+   ======================================== */
+
+.footer {
+
+    display:
+        flex;
+
+    justify-content:
+        center;
+
+    align-items:
+        center;
+
+    padding:
+        var(--espacio-s)
+        var(--espacio-m);
+
+    background-color:
+        var(--color-superficie-secundaria);
+
+    border-top:
+        0.08rem solid
+        var(--color-borde);
+
+    color:
+        var(--color-texto-secundario);
+
+    font-size:
+        0.85rem;
+
+}
+
+
+
+/* ========================================
+   AYUDA
+   ======================================== */
+
+.boton-ayuda {
+
+    position:
+        fixed;
+
+    right:
+        var(--espacio-l);
+
+    bottom:
+        var(--espacio-l);
+
+    width:
+        3rem;
+
+    aspect-ratio:
+        1;
+
+    border:
+        none;
+
+    border-radius:
+        50%;
+
+    background-color:
+        var(--color-principal);
+
+    color:
+        white;
+
+    font-size:
+        1.25rem;
+
+    font-weight:
+        700;
+
+    cursor:
+        pointer;
+
+    box-shadow:
+        var(--sombra-media);
+
+    z-index:
+        10;
+
+    transition:
+        background-color var(--transicion),
+        transform var(--transicion);
+
+}
+
+
+
+.boton-ayuda:hover {
+
+    background-color:
+        var(--color-principal-hover);
+
+    transform:
+        scale(1.06);
+
+}
+
+
+
+.ayuda {
+
+    position:
+        fixed;
+
+    inset:
+        0;
+
+    display:
+        grid;
+
+    place-items:
+        center;
+
+    padding:
+        var(--espacio-m);
+
+    background-color:
+        hsl(225 30% 4% / 0.72);
+
+    backdrop-filter:
+        blur(0.25rem);
+
+    z-index:
+        20;
+
+}
+
+
+
+.ayuda[hidden] {
+
+    display:
+        none;
+
+}
+
+
+
+.ayuda__contenido {
+
+    width:
+        min(32rem, 100%);
+
+    padding:
+        var(--espacio-l);
+
+    background-color:
+        var(--color-superficie);
+
+    border:
+        0.08rem solid
+        var(--color-borde);
+
+    border-radius:
+        var(--radio-l);
+
+    box-shadow:
+        var(--sombra-media);
+
+}
+
+
+
+.ayuda__contenido p {
+
+    margin-top:
+        var(--espacio-m);
+
+    color:
+        var(--color-texto-secundario);
+
+}
+
+
+
+.ayuda__cabecera {
+
+    display:
+        flex;
+
+    justify-content:
+        space-between;
+
+    align-items:
+        center;
+
+    gap:
+        var(--espacio-m);
+
+}
+
+
+
+.ayuda__cerrar {
+
+    border:
+        none;
+
+    background:
+        transparent;
+
+    color:
+        var(--color-texto);
+
+    font-size:
+        1.7rem;
+
+    cursor:
+        pointer;
+
+}
+
+
+
+/* ========================================
+   VICTORIA
+   ======================================== */
+
+.victoria {
+
+    position:
+        fixed;
+
+    inset:
+        0;
+
+    display:
+        grid;
+
+    place-items:
+        center;
+
+    padding:
+        var(--espacio-m);
+
+    background-color:
+        hsl(225 30% 4% / 0.72);
+
+    backdrop-filter:
+        blur(0.25rem);
+
+    z-index:
+        30;
+
+}
+
+
+
+.victoria[hidden] {
+
+    display:
+        none;
+
+}
+
+
+
+.victoria__contenido {
+
+    width:
+        min(28rem, 100%);
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    align-items:
+        center;
+
+    gap:
+        var(--espacio-m);
+
+    padding:
+        var(--espacio-xl);
+
+    background-color:
+        var(--color-superficie);
+
+    border:
+        0.08rem solid
+        var(--color-borde);
+
+    border-radius:
+        var(--radio-l);
+
+    box-shadow:
+        var(--sombra-media);
+
+    text-align:
+        center;
+
+}
+
+
+
+.victoria__icono {
+
+    width:
+        4rem;
+
+    aspect-ratio:
+        1;
+
+    display:
+        grid;
+
+    place-items:
+        center;
+
+    border-radius:
+        50%;
+
+    background-color:
+        hsl(135, 55%, 42%);
+
+    color:
+        white;
+
+    font-size:
+        2rem;
+
+    font-weight:
+        700;
+
+}
+
+
+
+.victoria__contenido h2 {
+
+    font-size:
+        clamp(
+            1.6rem,
+            4vw,
+            2.2rem
+        );
+
+}
+
+
+
+.victoria__contenido > p:not(.victoria__icono) {
+
+    color:
+        var(--color-texto-secundario);
+
+}
+
+
+
+.victoria__movimientos {
+
+    font-weight:
+        650;
+
+}
+
+
+
+/* ========================================
+   SELECCIÓN
+   ======================================== */
+
+::selection {
+
+    background-color:
+        hsl(212, 70%, 60%);
+
+    color:
+        white;
+
+}
+
+
+
+/* ========================================
+   RESPONSIVE
+   ======================================== */
+
+@media (max-width: 52rem) {
+
+    .principal {
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+
+    .configuracion {
+
+        width:
+            min(38rem, 100%);
+
+        margin-inline:
+            auto;
+
+    }
+
+
+    .controles {
+
+        display:
+            grid;
+
+        grid-template-columns:
+            repeat(
+                3,
+                1fr
+            );
+
+    }
+
+}
+
+
+
+@media (max-width: 38rem) {
+
+    .cabecera {
+
+        align-items:
+            flex-start;
+
+        padding:
+            var(--espacio-m);
+
+    }
+
+
+    .cabecera__subtitulo {
+
+        display:
+            none;
+
+    }
+
+
+    .boton--principal {
+
+        font-size:
+            0.85rem;
+
+    }
+
+
+    .principal {
+
+        width:
+            94%;
+
+        padding-block:
+            var(--espacio-m);
+
+    }
+
+
+    .controles {
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+
+    .juego__cabecera {
+
+        align-items:
+            flex-start;
+
+        flex-direction:
+            column;
+
+        gap:
+            var(--espacio-xs);
+
+    }
+
+
+    .tablero {
+
+        width:
+            min(90vw, 34rem);
+
+        gap:
+            0.3rem;
+
+        padding:
+            0.45rem;
+
+    }
+
+
+    .boton-ayuda {
+
+        right:
+            var(--espacio-m);
+
+        bottom:
+            var(--espacio-m);
+
+    }
+
+
+    .victoria__contenido {
+
+        padding:
+            var(--espacio-l);
+
+    }
+
+}
