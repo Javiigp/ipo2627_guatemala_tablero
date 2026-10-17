@@ -18,16 +18,6 @@ La aplicación implementa un juego de fichas sobre un tablero cuadrado NxN. El u
 - Panel de ayuda con las instrucciones del juego.
 - Diseño responsive.
 
-## Tecnologías utilizadas
-
-- HTML
-- CSS
-- JavaScript
-- CSS Grid
-- Flexbox
-- Drag & Drop API
-- `dataTransfer`
-- Atributos `data-*`
 
 ## Arquitectura
 
