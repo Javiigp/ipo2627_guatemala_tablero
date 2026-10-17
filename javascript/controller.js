@@ -25,13 +25,6 @@ const view =
 
 view.render(model);
 
-
-
-/* ========================================
-   CONTROLES
-   ======================================== */
-
-
 const botonNuevaPartida =
     document.querySelector(
         '[data-action="nueva-partida"]'
@@ -61,13 +54,6 @@ const controlApariencia =
         '[data-control="apariencia"]'
     );
 
-
-
-/*
-    Nueva partida desde
-    el botón de la cabecera.
-*/
-
 botonNuevaPartida.addEventListener(
     'click',
 
@@ -80,13 +66,6 @@ botonNuevaPartida.addEventListener(
     }
 );
 
-
-
-/*
-    Nueva partida después
-    de ganar.
-*/
-
 botonPartidaVictoria.addEventListener(
     'click',
 
@@ -98,12 +77,6 @@ botonPartidaVictoria.addEventListener(
 
     }
 );
-
-
-
-/*
-    Cambio de dimensión.
-*/
 
 controlDimension.addEventListener(
     'change',
@@ -132,12 +105,6 @@ controlDimension.addEventListener(
     }
 );
 
-
-
-/*
-    Cambio de tamaño.
-*/
-
 controlTamano.addEventListener(
     'change',
 
@@ -152,12 +119,6 @@ controlTamano.addEventListener(
 
     }
 );
-
-
-
-/*
-    Cambio de apariencia.
-*/
 
 controlApariencia.addEventListener(
     'change',
@@ -174,23 +135,10 @@ controlApariencia.addEventListener(
     }
 );
 
-
-
-/* ========================================
-   DRAG & DROP
-   ======================================== */
-
-
 const tablero =
     document.querySelector(
         '[data-tablero]'
     );
-
-
-
-/*
-    COMIENZO DEL ARRASTRE
-*/
 
 tablero.addEventListener(
     'dragstart',
@@ -209,18 +157,9 @@ tablero.addEventListener(
 
         }
 
-
-
         ficha.classList.add(
             'arrastrando'
         );
-
-
-
-        /*
-            Guardamos el índice de
-            la ficha arrastrada.
-        */
 
         event.dataTransfer.setData(
             'text/plain',
@@ -233,12 +172,6 @@ tablero.addEventListener(
 
     }
 );
-
-
-
-/*
-    FICHA SOBRE UNA CELDA
-*/
 
 tablero.addEventListener(
     'dragover',
@@ -257,13 +190,6 @@ tablero.addEventListener(
 
         }
 
-
-
-        /*
-            Necesario para que posteriormente
-            pueda producirse el evento drop.
-        */
-
         event.preventDefault();
 
 
@@ -273,12 +199,6 @@ tablero.addEventListener(
 
     }
 );
-
-
-
-/*
-    SOLTAMOS LA FICHA
-*/
 
 tablero.addEventListener(
     'drop',
@@ -297,16 +217,7 @@ tablero.addEventListener(
 
         }
 
-
-
         event.preventDefault();
-
-
-
-        /*
-            Recuperamos la posición
-            de la ficha origen.
-        */
 
         const origen =
             Number(
@@ -315,50 +226,20 @@ tablero.addEventListener(
                 )
             );
 
-
-
-        /*
-            Obtenemos la posición
-            de la ficha destino.
-        */
-
         const destino =
             Number(
                 celdaDestino.dataset.index
             );
-
-
-
-        /*
-            Intercambiamos ambas fichas.
-        */
 
         model.intercambiar(
             origen,
             destino
         );
 
-
-
-        /*
-            Volvemos a dibujar el tablero.
-
-            Si el movimiento ha completado
-            el juego, la View mostrará
-            automáticamente el mensaje
-            de victoria.
-        */
-
         view.render(model);
 
     }
 );
-
-
-
-/*
-    FIN DEL ARRASTRE
-*/
 
 tablero.addEventListener(
     'dragend',
@@ -369,13 +250,6 @@ tablero.addEventListener(
 
     }
 );
-
-
-
-/* ========================================
-   AYUDA
-   ======================================== */
-
 
 const botonAbrirAyuda =
     document.querySelector(
@@ -412,12 +286,6 @@ botonCerrarAyuda.addEventListener(
     }
 );
 
-
-
-/*
-    Permitimos cerrar la ayuda
-    utilizando Escape.
-*/
 
 document.addEventListener(
     'keydown',

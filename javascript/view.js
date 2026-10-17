@@ -64,7 +64,6 @@ export class JuegoView {
     }
 
 
-
     render(model) {
 
         this.actualizarControles(model);
@@ -73,12 +72,6 @@ export class JuegoView {
 
         this.actualizarInformacion(model);
 
-
-
-        /*
-            Mostramos la ventana de victoria
-            únicamente cuando el jugador gana.
-        */
 
         if (model.ganado) {
 
@@ -113,30 +106,15 @@ export class JuegoView {
 
     dibujarTablero(model) {
 
-        /*
-            Eliminamos el tablero anterior.
-        */
 
         this.tablero.replaceChildren();
 
-
-
-        /*
-            Variable CSS que indica
-            cuántas filas y columnas existen.
-        */
 
         this.tablero.style.setProperty(
             '--dimension',
             model.dimension
         );
 
-
-
-        /*
-            Guardamos características
-            mediante atributos data-*.
-        */
 
         this.tablero.dataset.tamano =
             model.tamano;
@@ -155,10 +133,6 @@ export class JuegoView {
         model.tablero.forEach(
             function (tipo, indice) {
 
-                /*
-                    Creamos la celda.
-                */
-
                 const celda =
                     document.createElement('div');
 
@@ -175,11 +149,6 @@ export class JuegoView {
                 celda.dataset.index =
                     indice;
 
-
-
-                /*
-                    Creamos la ficha.
-                */
 
                 const ficha =
                     document.createElement('div');
@@ -201,12 +170,6 @@ export class JuegoView {
                 ficha.dataset.tipo =
                     tipo;
 
-
-
-                /*
-                    Cuando se gana las fichas
-                    dejan de ser arrastrables.
-                */
 
                 ficha.draggable =
                     !model.ganado;

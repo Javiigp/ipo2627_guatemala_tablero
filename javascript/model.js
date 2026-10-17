@@ -14,12 +14,9 @@ export class JuegoModel {
 
         this.ganado = false;
 
-
         this.nuevaPartida();
 
     }
-
-
 
     nuevaPartida() {
 
@@ -30,8 +27,6 @@ export class JuegoModel {
         this.ganado = false;
 
     }
-
-
 
     cambiarDimension(dimension) {
 
@@ -91,15 +86,6 @@ export class JuegoModel {
 
         const fichas = [];
 
-
-        /*
-            Creamos una distribución
-            que sabemos que puede resolverse.
-
-            Cada fila completa contiene
-            inicialmente un mismo tipo.
-        */
-
         for (
             let fila = 0;
             fila < this.dimension;
@@ -122,20 +108,7 @@ export class JuegoModel {
 
         }
 
-
-
-        /*
-            Mezclamos las fichas.
-        */
-
         this.barajar(fichas);
-
-
-
-        /*
-            Evitamos comenzar con
-            el tablero ya resuelto.
-        */
 
         while (
             this.estaResuelto(fichas)
@@ -185,10 +158,6 @@ export class JuegoModel {
 
     intercambiar(origen, destino) {
 
-        /*
-            Si ya se ha ganado,
-            no permitimos más movimientos.
-        */
 
         if (this.ganado) {
 
@@ -197,24 +166,11 @@ export class JuegoModel {
         }
 
 
-
-        /*
-            No hacemos nada si la ficha
-            se suelta sobre sí misma.
-        */
-
         if (origen === destino) {
 
             return;
 
         }
-
-
-
-        /*
-            Comprobamos que las posiciones
-            sean válidas.
-        */
 
         if (
             origen < 0
@@ -230,12 +186,6 @@ export class JuegoModel {
 
         }
 
-
-
-        /*
-            Intercambiamos las fichas.
-        */
-
         [
             this.tablero[origen],
             this.tablero[destino]
@@ -247,16 +197,7 @@ export class JuegoModel {
 
         ];
 
-
-
         this.movimientos++;
-
-
-
-        /*
-            Comprobamos si después del
-            movimiento se ha ganado.
-        */
 
         this.ganado =
             this.estaResuelto(
@@ -268,10 +209,6 @@ export class JuegoModel {
 
 
     estaResuelto(tablero) {
-
-        /*
-            Comprobamos cada fila.
-        */
 
         for (
             let fila = 0;
@@ -286,12 +223,6 @@ export class JuegoModel {
             const tipoFila =
                 tablero[inicio];
 
-
-
-            /*
-                Todas las fichas de la fila
-                tienen que tener el mismo tipo.
-            */
 
             for (
                 let columna = 1;
